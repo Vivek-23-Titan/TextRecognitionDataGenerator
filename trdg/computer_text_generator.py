@@ -88,10 +88,26 @@ def _generate_horizontal_text(
             font=image_font,
         )
 
+    img_w, img_h = txt_img.size
+    
+    k = []
+    total = 0
+    widths = piece_widths
+    for i in range(len(widths)):
+      if i == 0 or i == len(widths)-1:
+        total = widths[i] + character_spacing//2 + total
+      else:
+        total = widths[i] + character_spacing + total
+      k.append(total)
+    #print(k)
+    
+    widths1 = [int(img_w*/k[-1]) for i in k]
+    widths1[-1] = widths1[-1] - 1
+    
     import os
     with open(os.path.join('/content/TextRecognitionDataGenerator/trdg',"Piece_Widths.txt"), "a+") as file1:
-    file1.write(str(piece_widths)+'\n')
-    file1.close()
+        file1.write(str(widths1)+'\n')
+        file1.close()
     
     
     if fit:
