@@ -101,7 +101,7 @@ def _generate_horizontal_text(
       k.append(total)
     #print(k)
     
-    widths1 = [int(img_w/k[-1]) for i in k]
+    widths1 = [int(img_w/k[-1]*i) for i in k]
     widths1[-1] = widths1[-1] - 1
     
     import os
