@@ -87,36 +87,11 @@ def _generate_horizontal_text(
             fill=((i + 1) // (255 * 255), (i + 1) // 255, (i + 1) % 255),
             font=image_font,
         )
-
-    img_w, img_h = txt_img.size
-    print("Piece_Widths:",piece_widths)
-    k = []
-    total = 0
-    widths = piece_widths
-    for i in range(len(widths)):
-      if i == 0 or i == len(widths)-1:
-        total = widths[i] + character_spacing//2 + total
-      else:
-        total = widths[i] + character_spacing + total
-      k.append(total)
-    
-    print("K:",k)
-    
-    print("Image Width:",img_w, "Image Heigth:", img_h)
-    
-    widths1 = [int(img_w/k[-1]*i) for i in k]
-    widths1[-1] = widths1[-1] - 1
-    
-    import os
-    with open(os.path.join('/content/TextRecognitionDataGenerator/trdg',"Piece_Widths.txt"), "a+") as file1:
-        file1.write(str(widths1)+'\n')
-        file1.close()
-    
     
     if fit:
         return txt_img.crop(txt_img.getbbox()), txt_mask.crop(txt_img.getbbox())
     else:
-        return txt_img, txt_mask
+        return txt_img, txt_mask, piece_widths
 
 
 def _generate_vertical_text(
