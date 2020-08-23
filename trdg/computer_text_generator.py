@@ -89,7 +89,7 @@ def _generate_horizontal_text(
         )
 
     img_w, img_h = txt_img.size
-    
+    print("Piece_Widths:",piece_widths)
     k = []
     total = 0
     widths = piece_widths
@@ -99,7 +99,10 @@ def _generate_horizontal_text(
       else:
         total = widths[i] + character_spacing + total
       k.append(total)
-    #print(k)
+    
+    print("K:",k)
+    
+    print("Image Width:",img_w, "Image Heigth:", img_h)
     
     widths1 = [int(img_w/k[-1]*i) for i in k]
     widths1[-1] = widths1[-1] - 1
