@@ -88,6 +88,12 @@ def _generate_horizontal_text(
             font=image_font,
         )
 
+    import os
+    with open(os.path.join('/content/TextRecognitionDataGenerator/trdg',"Piece_Widths.txt"), "a+") as file1:
+    file1.write(str(piece_widths)+'\n')
+    file1.close()
+    
+    
     if fit:
         return txt_img.crop(txt_img.getbbox()), txt_mask.crop(txt_img.getbbox())
     else:
