@@ -235,4 +235,6 @@ class FakeTextDataGenerator(object):
         else:
             if output_mask == 1:
                 return final_image.convert("RGB"), final_mask.convert("RGB")
+            img_w, img_h = final_image.size
+            print("NEW_W:", img_w, "NEW_H:", img_h)
             return final_image.convert("RGB")
