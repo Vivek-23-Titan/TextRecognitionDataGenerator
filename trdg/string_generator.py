@@ -102,7 +102,7 @@ def create_strings_randomly(length, allow_variable, count, let, num, sym, lang):
         min_seq_len = 1
         max_seq_len = 2
     else:
-        min_seq_len = 0
+        min_seq_len = 1
         max_seq_len = 15
         
         #____________________Change Required to include blank boxes______________________________________
