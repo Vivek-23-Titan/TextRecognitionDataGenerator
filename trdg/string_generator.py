@@ -92,9 +92,9 @@ def create_strings_randomly(length, allow_variable, count, let, num, sym, lang):
                 [chr(i) for i in range(19968, 40908)]
             )  # Unicode range of CHK characters
         else:
-            pool += string.ascii_letters
+            pool += string.ascii_uppercase
     if num:
-        pool += "0123456789" * 10
+        pool += "0123456789" * 5
     if sym:
         pool += "!\"#$%&'()*+,-./:;?@[\\]^_`{|}~"
 
