@@ -226,6 +226,26 @@ class FakeTextDataGenerator(object):
             image_name = "{}_{}.{}".format(text, str(index), extension)
             mask_name = "{}_{}_mask.png".format(text, str(index))
 
+        img_w, img_h = final_image.size
+        k = []
+        total = 0
+        widths = piece_widths
+        for i in range(len(widths)):
+            if i == 0 or i == len(widths)-1:
+                total = widths[i] + character_spacing//2 + total
+            else:
+                total = widths[i] + character_spacing + total
+            k.append(total)
+
+        widths1 = [int(img_w/k[-1]*i) for i in k]
+        widths1[-1] = widths1[-1] - 1
+
+        import os
+        with open(os.path.join('/content/TextRecognitionDataGenerator/trdg',"Piece_Widths.txt"), "a+") as file1:
+            file1.write(str(widths1)+'\n')
+            file1.close()
+        
+        
         # Save the image
         if out_dir is not None:
             final_image.convert("RGB").save(os.path.join(out_dir, image_name))
@@ -234,24 +254,4 @@ class FakeTextDataGenerator(object):
         else:
             if output_mask == 1:
                 return final_image.convert("RGB"), final_mask.convert("RGB")
-            
-            img_w, img_h = final_image.size
-            k = []
-            total = 0
-            widths = piece_widths
-            for i in range(len(widths)):
-              if i == 0 or i == len(widths)-1:
-                total = widths[i] + character_spacing//2 + total
-              else:
-                total = widths[i] + character_spacing + total
-              k.append(total)
-
-            widths1 = [int(img_w/k[-1]*i) for i in k]
-            widths1[-1] = widths1[-1] - 1
-
-            import os
-            with open(os.path.join('/content/TextRecognitionDataGenerator/trdg',"Piece_Widths.txt"), "a+") as file1:
-                file1.write(str(widths1)+'\n')
-                file1.close()
-    
             return final_image.convert("RGB")
