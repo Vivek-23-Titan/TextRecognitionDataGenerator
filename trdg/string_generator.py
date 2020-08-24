@@ -108,7 +108,7 @@ def create_strings_randomly(length, allow_variable, count, let, num, sym, lang):
         #____________________Change Required to include blank boxes______________________________________
         # Use space as a character and join it at the end of the random sequence
         #
-        space_min_seq_len = 0
+        space_min_seq_len = 1
         space_max_seq_len = 10
 
     strings = []
