@@ -123,7 +123,7 @@ def create_strings_randomly(length, allow_variable, count, let, num, sym, lang):
             space_exists = rnd.randint(0, 4)
             if space_exists == 0:
                 space_seq_len = rnd.randint(space_min_seq_len, space_max_seq_len)
-                current_string += "".join([" "*3 for _ in range(space_seq_len)])
+                current_string += "".join(["   " for _ in range(space_seq_len)])
             #_________________________________________________________________________________________________
             
         strings.append(current_string[:-1])
