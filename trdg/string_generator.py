@@ -103,7 +103,7 @@ def create_strings_randomly(length, allow_variable, count, let, num, sym, lang):
         max_seq_len = 2
     else:
         min_seq_len = 2
-        max_seq_len = 10
+        max_seq_len = 20
 
     strings = []
     for _ in range(0, count):
