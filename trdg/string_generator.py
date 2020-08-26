@@ -102,13 +102,13 @@ def create_strings_randomly(length, allow_variable, count, let, num, sym, lang):
         min_seq_len = 1
         max_seq_len = 2
     else:
-        min_seq_len = 1
+        min_seq_len = 8
         max_seq_len = 15
         
         #____________________Change Required to include blank boxes______________________________________
         # Use space as a character and join it at the end of the random sequence
         #
-        space_min_seq_len = 1
+        space_min_seq_len = 15
         space_max_seq_len = 20
 
     strings = []
@@ -120,7 +120,10 @@ def create_strings_randomly(length, allow_variable, count, let, num, sym, lang):
             
             #___________________________Change to add space inside boxes______________________________________
             space_exists = rnd.randint(0, 4)
-            if space_exists == 0 or seq_len == 0:
+            if space_exists == 0:
+                #or seq_len == 0:
+                pass
+            else:
                 space_seq_len = rnd.randint(space_min_seq_len, space_max_seq_len)
                 current_string += "".join([" " for _ in range(space_seq_len)])
             #_________________________________________________________________________________________________
